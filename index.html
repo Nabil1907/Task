@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Task</title>
+    <link rel="stylesheet" type="text/css" href="index.css"  /> 
+</head>
+<body>
+    <!-- Starting Code With Fixed Navpar -->
+        <div class="container">
+            <div id="navbar">
+            <a href="#about">About</a>
+            <a href="#users">Users</a>
+            <a href="#contact">Contact</a>
+            </div>
+        </div>
+        
+<script>
+    // When the user scrolls down 20px from the top of the document, slide down the navbar
+    window.onscroll = function() {scrollFunction()};
+    
+    function scrollFunction() {
+      if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+        document.getElementById("navbar").style.top = "0";
+      } else {
+        document.getElementById("navbar").style.top = "-50px";
+      }
+    }
+    </script>
+</body>
+</html>
