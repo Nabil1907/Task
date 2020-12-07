@@ -25,6 +25,11 @@
                   </div>
                 </div>
               </div>
+              <div  class="row">
+                  <p>
+                    Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur?
+                  </p>
+              </div>
 
             <!-- <div style="padding:15px 15px 2500px;font-size:30px">
                 <p><b>This example demonstrates how to slide down a navbar when the user starts to scroll the page.</b></p>
@@ -34,48 +39,94 @@
               </div> -->
 
         </div>
-        <div class="container" id="app">
-            <h3 class="text-center">Cryptocurrency Pricing</h3>
+        <div class="container" id="users">
+            <h3 class="text-center">Users</h3>
             <div class="columns medium-4" v-for="result in results">
                 <div class="card">
                   <div class="card-section">
                     <p> {{  }} </p>
                   </div>
                   <div class="card-divider">
-                    <p>$ {{ result.USD }}</p>
+                    <p>  Name : {{ result.name }}</p>
                   </div>
                   <div class="card-section">
-                    <p> &#8364 {{ result.EUR }}</p>
+                    <p> City : {{ result.address.city }}</p>
+                  </div>
+                  <div class="card-divider">
+                    <p>  Phone : {{ result.phone }}</p>
+                  </div>
+                  <div class="card-section">
+                    <p> Company : {{ result.company.name }}</p>
                   </div>
                 </div>
               </div>
-          </div>
+        </div>
+        <div class="container" id="about">
+            <div class="row">
+                <div class="col-md-12 col-sm-12 col-xs-12">
+                  <div class="section-headline text-center">
+                    <h2 style="margin-top: 300px;">Contact With Us </h2>
+                  </div>
+                </div>
+              </div>
+              <div class="row"> 
+                <div class="col-md-12 col-sm-12 col-xs-12">
+              <!-- Creating Form -->
+              <form action="#" method="post"  name="contact_form" novalidate>
+                <div class="container">
+                <label for="name"><b>Name</b></label>
+                <input type="text" placeholder="Pleace Enter your name" name="name" required>
+                
+                  <label for="mail"><b>Mail</b></label>
+                  <input type="text" placeholder="Pleace Enter your mail" name="email" required>
+              
+                  <label for="phone"><b>Phone</b></label>
+                  <input type="text" placeholder="please Enter your Phone" name="phone" required>
+                    
+                  <label for="message"><b>Message</b></label>
+                  <input type="text" placeholder="please Enter your message" name="message" required>
+                 
+                  <button type="submit" onclick="validate_form();">Login</button>
+                </div>
+              
+              </form>
+              </div>
+            </div>
+        </div>
 <script>
-    
-const url = "https://min-api.cryptocompare.com/data/pricemulti?fsyms=BTC,ETH&tsyms=USD,EUR";
+// When the user scrolls down 20px from the top of the document, slide down the navbar
+window.onscroll = function() {scrollFunction()};
+function validate_form() {
+    valid = true;
+
+if ( document.contact_form.name.value == "" )
+{
+    alert ( "Please fill in the 'Your Name' box." );
+    valid = false;
+}
+}
+function scrollFunction() {
+    if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+    document.getElementById("navbar").style.top = "0";
+    } else {
+    document.getElementById("navbar").style.top = "-50px";
+    }
+}
+//Api on Users Data   
+const url = "https://jsonplaceholder.typicode.com/users";
 const vm = new Vue({
     
-        el: '#app',
+        el: '#users',
         data: {
-          results:[]
+          results:{}
         },
-        mounted() {
+        created() {
           axios.get(url).then(response => {
-              console.log(response);
-            this.results = response.data
+          this.results = response.data
           })
         }
       });
-    // When the user scrolls down 20px from the top of the document, slide down the navbar
-    // window.onscroll = function() {scrollFunction()};
-    
-    // function scrollFunction() {
-    //   if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
-    //     document.getElementById("navbar").style.top = "0";
-    //   } else {
-    //     document.getElementById("navbar").style.top = "-50px";
-    //   }
-    // }
+
    
              
     </script>
