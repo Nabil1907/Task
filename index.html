@@ -1,169 +1,185 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <title>Task</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/foundation/6.3.1/css/foundation.min.css">
-    <meta charset="utf-8">
-    <link rel="stylesheet" type="text/css" href="index.css"  /> 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/1.0.18/vue.min.js"></script>
-    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
-    
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/foundation/6.3.1/css/foundation.min.css">
+  <meta charset="utf-8">
+  <link rel="stylesheet" type="text/css" href="index.css" />
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/1.0.18/vue.min.js"></script>
+  <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+
 </head>
+
 <body>
-    <!-- Starting Code With Fixed Navpar -->
-        <div class="container">
-            <div id="navbar">
-            <a href="#about">About</a>
-            <a href="#users">Users</a>
-            <a href="#contact">Contact</a>
-            </div>
+  <!-- Starting Code With Fixed Navpar -->
+  <div class="container">
+    <div id="navbar">
+      <a href="#about">About</a>
+      <a href="#users">Users</a>
+      <a href="#contact">Contact</a>
+    </div>
+  </div>
+  <div class="container" id="about">
+    <div class="row">
+      <div class="col-md-12 col-sm-12 col-xs-12">
+        <div class="section-headline text-center">
+          <h2>About</h2>
         </div>
-        <div class="container" id="about">
-            <div class="row">
-                <div class="col-md-12 col-sm-12 col-xs-12">
-                  <div class="section-headline text-center">
-                    <h2>About</h2>
-                  </div>
-                </div>
-              </div>
-              <div  class="row">
-                <div >
-                  <p>
-                    A web page or webpage is a document, commonly written in HTML, that is viewed in an Internet browser. A web page can be accessed by entering a URL address into a browser's address bar. A web page may contain text, graphics, and hyperlinks to other web pages and files.
+      </div>
+    </div>
+    <div class="row">
+      <div>
+        <p>
+          A web page or webpage is a document, commonly written in HTML, that is viewed in an Internet browser. A web
+          page can be accessed by entering a URL address into a browser's address bar. A web page may contain text,
+          graphics, and hyperlinks to other web pages and files.
 
-                    A web page is often used to provide information to viewers, including pictures or videos to help illustrate important topics. A web page may also be used as a method to sell products or services to viewers. Multiple web pages make up a website, like our Computer Hope website.
-                    
-                    When you click a link provided by a search engine, you are accessing a web page. The Internet consists of millions of web pages, with more being added every day. 
-                </p>
-                  </div>
-                <h6>
-                  How to open a web page ? 
-                </h6>
-                <p>
-                  Viewing a web page requires a browser, like Internet Explorer, Edge, Safari, Firefox, or Chrome. For example, you are reading this web page using a browser. Once in a browser, you can open a web page by entering the URL in the address bar. For example, typing "https://www.computerhope.com/esd.htm" (or copying and pasting) opens the Computer Hope ESD page. If you don't know the URL of the site you'd like to visit, you can use a search engine to find it.
-                </p>
-              </div>
+          A web page is often used to provide information to viewers, including pictures or videos to help illustrate
+          important topics. A web page may also be used as a method to sell products or services to viewers. Multiple
+          web pages make up a website, like our Computer Hope website.
+
+          When you click a link provided by a search engine, you are accessing a web page. The Internet consists of
+          millions of web pages, with more being added every day.
+        </p>
+      </div>
+      <h6>
+        How to open a web page ?
+      </h6>
+      <p>
+        Viewing a web page requires a browser, like Internet Explorer, Edge, Safari, Firefox, or Chrome. For example,
+        you are reading this web page using a browser. Once in a browser, you can open a web page by entering the URL in
+        the address bar. For example, typing "https://www.computerhope.com/esd.htm" (or copying and pasting) opens the
+        Computer Hope ESD page. If you don't know the URL of the site you'd like to visit, you can use a search engine
+        to find it.
+      </p>
+    </div>
+  </div>
+  <div class="container" id="users">
+    <div class="row">
+      <div class="col-md-12 col-sm-12 col-xs-12">
+        <div class="section-headline text-center">
+          <h2>Users</h2>
         </div>
-        <div class="container" id="users">
-          <div class="row">
-            <div class="col-md-12 col-sm-12 col-xs-12">
-              <div class="section-headline text-center">
-                <h2>Users</h2>
-              </div>
-            </div>
+      </div>
+    </div>
+    <div class="columns medium-4" v-for="result in results">
+      <div class="card">
+        <div class="card-section">
+          <img src="./img/img_avatar.png" alt="Avatar" class="avatar">
+        </div>
+        <div class="card-divider">
+          <p> Name : {{ result.name }}</p>
+        </div>
+        <div class="card-section">
+          <p> City : {{ result.address.city }}</p>
+        </div>
+        <div class="card-divider">
+          <p> Phone : {{ result.phone }}</p>
+        </div>
+        <div class="card-section">
+          <p> Company : {{ result.company.name }}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="container" id="about">
+    <div class="row">
+      <div class="col-md-12 col-sm-12 col-xs-12">
+        <div class="section-headline text-center">
+          <h2 style="margin-top: 350px;margin-right: auto ;">Contact With Us </h2>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-12 col-sm-12 col-xs-12">
+        <!-- Creating Form -->
+        <form action="#contact" id="contact" method="post" name="contact_form" novalidate>
+          <div class="container">
+            <label for="name"><b>Name</b></label>
+            <input type="text" placeholder="Pleace Enter your name" name="name" required>
+            <p id="valid-name" style="display:none;color: brown;">Name is required !</p>
+
+            <label for="mail"><b>Mail</b></label>
+            <input type="text" placeholder="Pleace Enter your mail" name="mail" required>
+            <p id="valid-mail" style="display:none;color: brown;">Mail is require !</p>
+
+            <label for="phone"><b>Phone</b></label>
+            <input type="text" placeholder="please Enter your Phone" name="phone" required>
+            <p id="valid-phone" style="display:none;color: brown;">Phone is require !</p>
+
+            <label for="message"><b>Message</b></label>
+            <input type="text" placeholder="please Enter your message" name="message" required>
+            <p id="valid-message" style="display:none;color: brown;">Message is require!</p>
+
+            <button id="submit-btn" type="button" onclick="validate_form();" >Login</button>
           </div>
-            <div class="columns medium-4" v-for="result in results">
-                <div class="card">
-                  <div class="card-section">
-                    <img src="./img/img_avatar.png" alt="Avatar" class="avatar">
-                  </div>
-                  <div class="card-divider">
-                    <p>  Name : {{ result.name }}</p>
-                  </div>
-                  <div class="card-section">
-                    <p> City : {{ result.address.city }}</p>
-                  </div>
-                  <div class="card-divider">
-                    <p>  Phone : {{ result.phone }}</p>
-                  </div>
-                  <div class="card-section">
-                    <p> Company : {{ result.company.name }}</p>
-                  </div>
-                </div>
-              </div>
-        </div>
-        <div class="container" id="about">
-            <div class="row">
-                <div class="col-md-12 col-sm-12 col-xs-12">
-                  <div class="section-headline text-center">
-                    <h2 style="margin-top: 350px;margin-right: auto ;">Contact With Us </h2>
-                  </div>
-                </div>
-              </div>
-              <div class="row"> 
-                <div class="col-md-12 col-sm-12 col-xs-12">
-              <!-- Creating Form -->
-              <form action="#contact" id="contact" method="post"  name="contact_form" novalidate>
-                <div class="container">
-                <label for="name"><b>Name</b></label>
-                <input type="text" placeholder="Pleace Enter your name" name="name"  required>
-                <p id="valid-name" style="display:none;color: brown;">Name is required !</p>
 
-                  <label for="mail"><b>Mail</b></label>
-                  <input type="text" placeholder="Pleace Enter your mail" name="mail" required>
-                  <p id="valid-mail" style="display:none;color: brown;">Mail is require !</p>
+        </form>
+      </div>
+    </div>
+  </div>
+  <script>
+    // When the user scrolls down 20px from the top of the document, slide down the navbar
+    window.onscroll = function () { scrollFunction() };
+    function validate_form() {
+      valid = true;
+      document.getElementById('valid-name').style.display = 'none';
+      document.getElementById('valid-mail').style.display = 'none';
+      document.getElementById('valid-phone').style.display = 'none';
+      document.getElementById('valid-message').style.display = 'none';
 
-                  <label for="phone"><b>Phone</b></label>
-                  <input type="text" placeholder="please Enter your Phone" name="phone" required>
-                  <p id="valid-phone" style="display:none;color: brown;">Phone is require !</p>
-                    
-                  <label for="message"><b>Message</b></label>
-                  <input type="text" placeholder="please Enter your message" name="message" required>
-                  <p id="valid-message" style="display:none;color: brown;">Message is require!</p>
-                 
-                  <button type="button" onclick="validate_form();" id="submit-btn">Login</button>
-                </div>
-              
-              </form>
-              </div>
-            </div>
-        </div>
-<script>
-// When the user scrolls down 20px from the top of the document, slide down the navbar
-window.onscroll = function() {scrollFunction()};
-function validate_form() {
-    valid = true;
-    document.getElementById('valid-name').style.display='none';
-    document.getElementById('valid-mail').style.display='none';
-    document.getElementById('valid-phone').style.display='none';
-    document.getElementById('valid-message').style.display='none';
-
-if ( document.contact_form.name.value == "" )
-{
-    document.getElementById('valid-name').style.display='block';
-    // alert ( "Please fill in the 'Your Name' box." );
-    valid = false;
-}
-if(document.contact_form.mail.value == "" ){
-  document.getElementById('valid-mail').style.display='block';
-  // alert ( "Please fill in the 'Your Mail' box." );
-  valid = false; 
-}
-if(document.contact_form.phone.value == "" ){
-  document.getElementById('valid-phone').style.display='block';
-  // alert ( "Please fill in the 'Your Phone' box." );
-  valid = false; 
-}
-if(document.contact_form.message.value == "" ){
-  document.getElementById('valid-message').style.display='block';
-  // alert ( "Please fill in the 'Your Message' box." );
-  valid = false; 
-}
-}
-function scrollFunction() {
-    if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
-    document.getElementById("navbar").style.top = "0";
-    } else {
-    document.getElementById("navbar").style.top = "-50px";
+      if (document.contact_form.name.value == "") {
+        document.getElementById('valid-name').style.display = 'block';
+        // alert ( "Please fill in the 'Your Name' box." );
+        valid = false;
+      }
+      if (document.contact_form.mail.value == "") {
+        document.getElementById('valid-mail').style.display = 'block';
+        // alert ( "Please fill in the 'Your Mail' box." );
+        valid = false;
+      }
+      if (document.contact_form.phone.value == "") {
+        document.getElementById('valid-phone').style.display = 'block';
+        // alert ( "Please fill in the 'Your Phone' box." );
+        valid = false;
+      }
+      if (document.contact_form.message.value == "") {
+        document.getElementById('valid-message').style.display = 'block';
+        // alert ( "Please fill in the 'Your Message' box." );
+        valid = false;
+      }else
+      if(valid){
+        document.getElementById('submit-btn').type='submit';
+        // alert('data Complete')
+      }
+      
     }
-}
-//Api on Users Data   
-const url = "https://jsonplaceholder.typicode.com/users";
-const vm = new Vue({
-    
-        el: '#users',
-        data: {
-          results:{}
-        },
-        created() {
-          axios.get(url).then(response => {
-          this.results = response.data
-          })
-        }
-      });
+    function scrollFunction() {
+      if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+        document.getElementById("navbar").style.top = "0";
+      } else {
+        document.getElementById("navbar").style.top = "-50px";
+      }
+    }
+    //Api on Users Data   
+    const url = "https://jsonplaceholder.typicode.com/users";
+    const vm = new Vue({
 
-   
-             
-    </script>
+      el: '#users',
+      data: {
+        results: {}
+      },
+      created() {
+        axios.get(url).then(response => {
+          this.results = response.data
+        })
+      }
+    });
+
+
+
+  </script>
 </body>
+
 </html>
